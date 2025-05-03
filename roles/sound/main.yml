@@ -1,0 +1,25 @@
+- name: Install pipewire
+  community.general.pacman:
+    name:
+      - pipewire
+      - lib32-pipewire
+      - pipewire-audio
+      - wireplumber
+      - pipewire-alsa
+      - pipewire-pulse
+      - pipewire-jack
+      - lib32-pipewire-jack
+      - pavucontrol
+    state: present
+  register: task_result
+  until: task_result is success
+  retries: 10
+  delay: 2
+
+- name: Enable pipewire-pulse user service
+  ansible.builtin.systemd:
+    name: pipewire-pulse.service
+    state: started
+    enabled: true
+  become_user: "{{ user.name }}"
+  become: true

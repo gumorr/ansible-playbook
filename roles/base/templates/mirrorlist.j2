@@ -1,0 +1,7 @@
+#
+# Ansible generated
+#
+
+{% for mirror in pacman_mirrors %}
+Server = {{ mirror }}
+{% endfor %}

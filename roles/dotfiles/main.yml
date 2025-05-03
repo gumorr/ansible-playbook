@@ -1,0 +1,19 @@
+---
+
+- name: Clone user dotfiles
+  ansible.builtin.git:
+    repo: "{{ dotfiles.url }}"
+    dest: "{{ dotfiles.destination }}"
+    version: "{{'desktop' if (system.desktop) else 'laptop'}}"
+    accept_hostkey: true
+    update: true
+    force: true
+  become: true
+  become_user: "{{ user.name }}"
+
+- name: Install user dotfiles
+  ansible.builtin.command: "./stow_dotfiles.sh"
+  args:
+    chdir: "{{ dotfiles.destination }}"
+  become: true
+  become_user: "{{ user.name }}"

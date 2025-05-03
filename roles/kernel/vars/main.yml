@@ -1,0 +1,8 @@
+---
+
+initrd_mods: ""
+initrd_bin: ""
+initrd_files: ""
+initrd_hooks: "base udev autodetect modconf kms keyboard keymap consolefont block filesystems fsck resume"
+initrd_compression: "cat"
+initrd_modules_decompress: false

@@ -1,0 +1,12 @@
+grub_distributor: Arch
+grub_cmdline_default: "loglevel=3 quiet {{intel_iommu=on if (system.processor == 'intel')}} iommu=pt"
+grub_cmdline: ""
+
+grub_cryptodisk: false
+grub_preload_modules: "part_gpt part_msdos"
+
+grub_timeout_style: menu
+grub_gfxmode: 1920x1080x32
+grub_gfxpayload_linux: keep
+
+grub_os_probe: false

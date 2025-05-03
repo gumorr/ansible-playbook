@@ -1,0 +1,10 @@
+---
+
+- name: Import base tasks
+  ansible.builtin.import_tasks: base.yml
+
+- name: Import user tasks
+  ansible.builtin.import_tasks: user.yml
+
+- name: Import locale tasks
+  ansible.builtin.import_tasks: locale.yml

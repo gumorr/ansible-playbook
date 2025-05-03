@@ -1,0 +1,27 @@
+#
+# Ansible generated
+#
+
+GRUB_DEFAULT=0
+GRUB_TIMEOUT=5
+GRUB_DISTRIBUTOR="{{ grub_distributor }}"
+GRUB_CMDLINE_LINUX_DEFAULT="{{ grub_cmdline_default }}"
+GRUB_CMDLINE_LINUX="{{ grub_cmdline }}"
+
+GRUB_PRELOAD_MODULES="{{ grub_preload_modules }}"
+
+{% if grub_cryptodisk %}
+GRUB_ENABLE_CRYPTODISK=y
+{% endif %}
+
+GRUB_TERMINAL_INPUT=console
+
+GRUB_TIMEOUT_STYLE="{{ grub_timeout_style }}"
+GRUB_GFXMODE="{{ grub_gfxmode }}"
+GRUB_GFXPAYLOAD_LINUX="{{ grub_gfxpayload_linux }}"
+
+{% if grub_os_probe %}
+GRUB_DISABLE_OS_PROBER=false
+{% endif %}
+
+GRUB_DISABLE_RECOVERY=true

@@ -1,0 +1,24 @@
+---
+
+- name: Install linux-xanmod kernel
+  aur:
+    name:
+      - linux-xanmod-linux-bin-x64v3
+      - linux-xanmod-linux-headers-bin-x64v3
+    user: "{{ user.name }}"
+  register: task_result
+  until: task_result is success
+  retries: 10
+  delay: 2
+  notify:
+    - Update grub
+
+- name: Mkinitcpio configuration
+  ansible.builtin.template:
+    src: mkinitcpio.conf.j2
+    dest: /etc/mkinitcpio.conf
+    mode: "0644"
+    user: root
+    group: root
+  notify:
+    - Regenerate initramfs

@@ -1,0 +1,35 @@
+#
+# Ansible generated
+#
+
+# MODULES
+{% if system.graphics_card == 'nvidia' %} 
+MODULES=({{ initrd_mods }} nvidia nvidia_modeset nvidia_uvm nvidia_drm) 
+{% elif system.graphics_card == 'intel' %} 
+MODULES=({{ initrd_mods }} i915) 
+{% elif system.graphics_card == 'amd' %} 
+MODULES=({{ initrd_mods }} amdgpu)
+{% endif %}
+
+# BINARIES
+BINARIES=({{ initrd_bin }})
+
+# FILES
+FILES=({{ initrd_files }})
+
+# HOOKS
+HOOKS=({{ initrd_hooks }})
+
+# COMPRESSION
+COMPRESSION="{{ initrd_compression }}"
+
+# COMPRESSION_OPTIONS
+#COMPRESSION_OPTIONS=()
+
+# Decompression of kernel modules during initramfs creation
+{% if initrd_modules_decompress %} 
+MODULES_DECOMPRESS="yes"
+{% else %}
+MODULES_DECOMPRESS="no"
+{% endif %}
+

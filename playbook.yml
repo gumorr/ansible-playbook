@@ -1,0 +1,14 @@
+---
+
+- name: Arch Linux post-install
+  hosts: hosts
+  connection: local
+  become: true
+
+  roles:
+    - { role: kernel, tags: ['kernel'] }
+    - { role: base, tags: ['base'] }
+    - { role: network, tags: ['network'] }
+    - { role: grub, tags: ['grub'] }
+    - { role: x11, tags: ['x11'] }
+    - { role: windowmanager, tags: ['windowmanager'] }

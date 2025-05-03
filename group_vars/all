@@ -1,0 +1,28 @@
+user:
+    name: yahvka
+    group: users
+    shell: /bin/bash
+
+# desktop:
+#   true: configure settings for desktop (no power savings, multiple monitors)
+#   false: configure settings for laptop (power savings, one monitor)
+#
+# processor:
+#   "intel": install intel microcode
+#   "amd": install amd microcode
+#
+# graphics_card:
+#   "intel": install intel gpu drivers
+#   "amd": install amd gpu drivers
+#   "nvidia": install nvidia-open gpu drivers
+system:
+    locale: en_US.UTF-8
+    timezone: US/Central
+    desktop: true
+    processor: intel
+    graphics_card: nvidia
+
+dotfiles:
+    installation: true
+    url: https://github.com/gumorr/dotfiles.git
+    destination: "/home/{{ user.name }}/dotfiles"

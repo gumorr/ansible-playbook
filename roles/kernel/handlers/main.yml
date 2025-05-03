@@ -1,0 +1,9 @@
+---
+
+- name: Regenerate initramfs
+  ansible.builtin.command: "mkinitcpio -p {{ item }}"
+  with_items:
+      - linux
+      - linux-xanmod-linux-bin-x64v3
+  register: mkinitcpio_out
+  changed_when: mkinitcpio_out.rc == 0

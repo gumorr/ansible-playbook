@@ -14,6 +14,7 @@
   community.general.pacman:
     name:
       - lightdm
+      - light-locker
       - acpid
     state: present
   register: task_result
@@ -91,6 +92,15 @@
     owner: root
     group: root
     mode: "0644"
+
+- name: Configure light-locker
+  ansible.builtin.template:
+    src: 99-light-locker.sh.j2
+    dest: /etc/X11/xinit.d/99-light-locker.sh
+    backup: false
+    owner: root
+    group: root
+    mode: "0755"
 
 - name: Configure lightdm-mini-greeter
   ansible.builtin.template:

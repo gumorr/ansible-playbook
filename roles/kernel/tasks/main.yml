@@ -17,8 +17,9 @@
   ansible.builtin.template:
     src: mkinitcpio.conf.j2
     dest: /etc/mkinitcpio.conf
-    mode: "0644"
-    user: root
+    backup: false
+    owner: root
     group: root
+    mode: "0644"
   notify:
     - Regenerate initramfs

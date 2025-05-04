@@ -6,8 +6,8 @@
   become: true
 
   roles:
-    - { role: kernel, tags: ['kernel'] }
     - { role: base, tags: ['base'] }
+    - { role: kernel, tags: ['kernel'] }
     - { role: grub, tags: ['grub'] }
     - { role: x11, tags: ['x11'] }
     - { role: windowmanager, tags: ['windowmanager'] }

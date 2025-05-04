@@ -20,6 +20,15 @@
     group: root
     mode: "0644"
 
+- name: Configure sudo
+  ansible.builtin.template:
+    src: sudoers.j2
+    dest: /etc/sudoers
+    backup: false
+    owner: root
+    group: root
+    mode: "0440"
+
 # install packages
 
 - name: Perform full system upgrade
@@ -74,15 +83,6 @@
   notify:
     - update grub
   when: system.processor == "amd"
-
-- name: Configure sudo
-  ansible.builtin.template:
-    src: sudoers.j2
-    dest: /etc/sudoers
-    backup: false
-    owner: root
-    group: root
-    mode: "0440"
 
 - name: Configure timesyncd
   ansible.builtin.template:

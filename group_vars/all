@@ -27,16 +27,38 @@ dotfiles:
     url: https://github.com/gumorr/dotfiles.git
     destination: "/home/{{ user.name }}/dotfiles"
 
+# system utilities/command line applications
 base_packages:
     - base
     - base-devel
     - pacman-contrib
+    - coreutils
     - openssh
     - curl
     - wget
     - git
     - rsync
     - gvfs
-    - coreutils
+    - dosfstools
+    - 7zip
+    - zip
+    - unzip
+    - unarchiver
+    - unrar
     - nano
+    - python
     - fastfetch
+
+# gui applications
+app_packages:
+    - kitty
+    - ark
+    - thunar
+    - thunar-archive-plugin
+    - thunar-media-tags-plugin
+    - thunar-volman
+    - steam
+
+# flatpak applications
+app_flatpaks:
+    - org.mozilla.firefox

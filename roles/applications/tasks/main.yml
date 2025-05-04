@@ -1,0 +1,7 @@
+---
+
+- name: Import application tasks
+  ansible.builtin.import_tasks: applications.yml
+
+- name: Import flatpak tasks
+  ansible.builtin.import_tasks: flatpak.yml

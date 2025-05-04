@@ -1,0 +1,33 @@
+---
+
+- name: Install flatpak
+  community.general.pacman:
+    name: flatpak
+    state: present
+  register: task_result
+  until: task_result is success
+  retries: 10
+  delay: 2
+
+- name: Add flathub flatpak repository
+  community.general.flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+    method: user
+
+- name: Add flathub-beta flatpak repository
+  community.general.flatpak_remote:
+    name: flathub-beta
+    state: present
+    flatpakrepo_url: https://flathub.org/beta-repo/flathub-beta.flatpakrepo
+    method: user
+
+- name: Install flatpak applications
+  community.general.flatpak:
+    name: "{{ app_flatpaks }}"
+    state: present
+  register: task_result
+  until: task_result is success
+  retries: 10
+  delay: 2

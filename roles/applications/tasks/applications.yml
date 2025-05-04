@@ -1,0 +1,10 @@
+---
+
+- name: Install applications
+  community.general.pacman:
+    name: "{{ app_packages }}"
+    state: present
+  register: task_result
+  until: task_result is success
+  retries: 10
+  delay: 2

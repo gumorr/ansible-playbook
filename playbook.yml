@@ -14,5 +14,5 @@
     - { role: network, tags: ['network'] }
     - { role: sound, tags: ['sound'] }
     - { role: power, tags: ['power'] }
-    # - { role: applications, tags: ['applications'] }
+    - { role: applications, tags: ['applications'] }
     - { role: dotfiles, tags: ['dotfiles'] }

@@ -46,6 +46,7 @@ base_packages:
     - unarchiver
     - unrar
     - nano
+    - stow
     - python
     - fastfetch
 

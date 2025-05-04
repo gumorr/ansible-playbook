@@ -75,7 +75,14 @@
     - update grub
   when: system.processor == "amd"
 
-# enable services
+- name: Configure sudo
+  ansible.builtin.template:
+    src: sudoers.j2
+    dest: /etc/sudoers
+    backup: false
+    owner: root
+    group: root
+    mode: "0440"
 
 - name: Configure timesyncd
   ansible.builtin.template:
@@ -85,6 +92,8 @@
     owner: root
     group: root
     mode: "0644"
+
+# enable services
 
 - name: Enable timesyncd
   ansible.builtin.systemd:

@@ -26,3 +26,17 @@ dotfiles:
     installation: true
     url: https://github.com/gumorr/dotfiles.git
     destination: "/home/{{ user.name }}/dotfiles"
+
+base_packages:
+    - base
+    - base-devel
+    - pacman-contrib
+    - openssh
+    - curl
+    - wget
+    - git
+    - rsync
+    - gvfs
+    - coreutils
+    - nano
+    - fastfetch

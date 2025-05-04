@@ -1,0 +1,10 @@
+#
+# Ansible generated
+#
+
+[Sleep]
+{% if system.desktop %}
+HibernateDelaySec={{ hibernate_time_desktop }}
+{% else %}
+HibernateDelaySec={{ hibernate_time_laptop }}
+{% endif %}

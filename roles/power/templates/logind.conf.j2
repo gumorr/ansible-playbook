@@ -1,0 +1,12 @@
+#
+# Ansible generated
+#
+
+[Login]
+{% if system.desktop %}
+IdleAction=suspend-then-hibernate
+IdleActionSec={{ suspend_time_desktop }}
+{% else %}
+HandleLidSwitch=suspend-then-hibernate
+HandleLidSwitchExternalPower=suspend-then-hibernate
+{% endif %}

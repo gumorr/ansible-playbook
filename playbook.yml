@@ -8,7 +8,11 @@
   roles:
     - { role: kernel, tags: ['kernel'] }
     - { role: base, tags: ['base'] }
-    - { role: network, tags: ['network'] }
     - { role: grub, tags: ['grub'] }
     - { role: x11, tags: ['x11'] }
     - { role: windowmanager, tags: ['windowmanager'] }
+    - { role: network, tags: ['network'] }
+    - { role: sound, tags: ['sound'] }
+    - { role: power, tags: ['power'] }
+    # - { role: applications, tags: ['applications'] }
+    - { role: dotfiles, tags: ['dotfiles'] }

@@ -4,7 +4,7 @@
   community.general.timezone:
     name: "{{ system.timezone }}"
 
-- name: Ensure the locale {{ system.locale }} exists
+- name: Set locale to {{ system.locale }}
   community.general.locale_gen:
     name: "{{ system.locale }}"
     state: present

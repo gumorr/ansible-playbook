@@ -5,6 +5,7 @@
     name:
       - awesome
       - lightdm
+      - acpid
     state: present
   register: task_result
   until: task_result is success
@@ -29,10 +30,43 @@
   retries: 10
   delay: 2
 
-- name: Install LightDM greeter + gtk3-classic
+- name: Install gtk3-classic
   aur:
     name:
       - gtk3-classic
+    user: "{{ user.name }}"
+  register: task_result
+  until: task_result is success
+  retries: 10
+  delay: 2
+
+- name: Install XDG utilities
+  community.general.pacman:
+    name:
+      - xdg-utils
+      - xdg-user-dirs
+      - xdg-desktop-portal
+      - xdg-desktop-portal-gtk
+    state: present
+  register: task_result
+  until: task_result is success
+  retries: 10
+  delay: 2
+
+- name: Install polkit
+  community.general.pacman:
+    name:
+      - polkit
+      # - {{ INSERT POLKIT AGENT HERE }}
+    state: present
+  register: task_result
+  until: task_result is success
+  retries: 10
+  delay: 2
+
+- name: Install lightdm-mini-greeter
+  aur:
+    name:
       - lightdm-mini-greeter
     user: "{{ user.name }}"
   register: task_result
@@ -61,5 +95,11 @@
 - name: Enable LightDM service
   ansible.builtin.systemd:
     name: lightdm.service
+    state: started
+    enabled: true
+
+- name: Enable ACPI service
+  ansible.builtin.systemd:
+    name: acpid.service
     state: started
     enabled: true

@@ -1,5 +1,5 @@
 grub_distributor: Arch
-grub_cmdline_default: "loglevel=3 quiet {{intel_iommu=on if (system.processor == 'intel')}} iommu=pt"
+grub_cmdline_default: "loglevel=3 quiet {{'intel_iommu=on' if (system.processor == 'intel')}} iommu=pt"
 grub_cmdline: ""
 
 grub_cryptodisk: false

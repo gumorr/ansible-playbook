@@ -1,0 +1,50 @@
+---
+
+- name: Sleep configuration
+  ansible.builtin.template:
+    src: sleep.conf.j2
+    dest: /etc/systemd/sleep.conf
+    backup: false
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Logind configuration
+  ansible.builtin.template:
+    src: logind.conf.j2
+    dest: /etc/systemd/logind.conf
+    backup: false
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Install TLP
+  community.general.pacman:
+    name: tlp
+    state: present
+  register: task_result
+  until: task_result is success
+  retries: 10
+  delay: 2
+  when: not system.desktop
+
+- name: Enable TLP service
+  ansible.builtin.systemd:
+    name: tlp.service
+    state: started
+    enabled: true
+  when: not system.desktop
+
+- name: Mask RF kill service
+  ansible.builtin.systemd:
+    name: systemd-rfkill.service
+    state: stopped
+    masked: true
+  when: not system.desktop
+
+- name: Mask RF kill socket
+  ansible.builtin.systemd:
+    name: systemd-rfkill.socket
+    state: stopped
+    masked: true
+  when: not system.desktop

@@ -1,0 +1,4 @@
+suspend_time_desktop: 900
+
+hibernate_time_desktop: 3600
+hibernate_time_laptop: 600

@@ -9,4 +9,4 @@
     group: root
     mode: "0644"
   notify:
-    - Grub update
+    - Update grub
